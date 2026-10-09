@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bugatti Hypercars</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #020b16;
+    color: white;
+}
+
+/* Navigation */
+nav {
+    background: #030914;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #008cff;
+}
+
+.logo {
+    color: #00bfff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00bfff;
+}
+
+/* Hero */
+.hero {
+    min-height: 440px;
+    padding: 65px 6%;
+    background:
+    linear-gradient(90deg, #020914 10%, #020914aa 55%, transparent),
+    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: #00bfff;
+}
+
+.hero p {
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 24px;
+    background: #008cff;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+    color: #0077cc;
+    box-shadow: 0 0 20px #00bfff;
+}
+
+/* Quick Stats */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+    background: #071a2b;
+    text-align: center;
+}
+
+.stat h2 {
+    color: #00bfff;
+    margin-bottom: 5px;
+}
+
+/* Section */
+section {
+    padding: 45px 5%;
+}
+
+.heading {
+    color: #00bfff;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* About */
+.about {
+    background: #0b1d30;
+    padding: 25px;
+    border-left: 4px solid #00bfff;
+    border-radius: 10px;
+    line-height: 1.9;
+}
+
+/* Car Cards */
+.models {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #081827;
+    border: 1px solid #07517d;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px #0077ff88;
+    border-color: #00bfff;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.card h3 {
+    color: #00bfff;
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.6;
+    color: #d5e5f5;
+}
+
+.speed {
+    color: #00d5ff;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.tag {
+    display: inline-block;
+    background: #103958;
+    color: #72d9ff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 12px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #081827;
+}
+
+th, td {
+    padding: 14px;
+    border: 1px solid #125078;
+    text-align: center;
+}
+
+th {
+    background: #07517d;
+    color: white;
+}
+
+tr:hover {
+    background: #12334b;
+}
+
+/* Choose Model */
+.choice {
+    background: #0b1d30;
+    border: 1px solid #087bb4;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+select {
+    padding: 13px;
+    width: 250px;
+    max-width: 100%;
+    border-radius: 7px;
+    margin: 10px;
+}
+
+#result {
+    color: #00d5ff;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #0077bb;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px #008cff;
+}
+
+/* Footer */
+footer {
+    background: #02060d;
+    border-top: 2px solid #008cff;
+    text-align: center;
+    padding: 25px;
+    color: #a8c5db;
+}
+
+footer h2 {
+    color: #00bfff;
+    letter-spacing: 4px;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero {
+        padding: 45px 6%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 6px;
+    }
+
+    th, td {
+        padding: 8px 4px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">BUGATTI</div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#models">Models</a>
+        <a href="#speed">Speed</a>
+        <a href="#gallery">Gallery</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>THE ART OF <span>PERFORMANCE</span></h1>
+
+        <p>
+            Welcome to the extraordinary world of Bugatti.
+            Discover legendary hypercars combining luxury,
+            breathtaking speed and advanced engineering.
+        </p>
+
+        <a href="#models" class="btn">EXPLORE MODELS →</a>
+    </div>
+</div>
+
+<!-- Highlights -->
+<div class="stats">
+    <div class="stat">
+        <h2>1909</h2>
+        <p>Brand Founded</p>
+    </div>
+
+    <div class="stat">
+        <h2>1500+ HP</h2>
+        <p>Extreme Power</p>
+    </div>
+
+    <div class="stat">
+        <h2>400+ km/h</h2>
+        <p>Hypercar Speed</p>
+    </div>
+
+    <div class="stat">
+        <h2>Luxury</h2>
+        <p>Exceptional Design</p>
+    </div>
+</div>
+
+<!-- About -->
+<section id="about">
+    <h2 class="heading">ABOUT BUGATTI</h2>
+
+    <div class="about">
+        <p>
+            Bugatti is a legendary automobile marque known for
+            luxury hypercars, extraordinary engineering and
+            distinctive design. Founded by Ettore Bugatti in
+            1909, the brand has become famous for combining
+            performance, craftsmanship and innovation.
+        </p>
+
+        <p>
+            Every Bugatti model has its own character, from
+            high-speed grand touring cars to extreme track-only
+            machines. Bugatti represents a remarkable combination
+            of automotive technology and luxury.
+        </p>
+    </div>
+</section>
+
+<!-- Models -->
+<section id="models">
+    <h2 class="heading">OUR LEGENDARY CARS</h2>
+
+    <div class="models">
+
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=85"
+            alt="Luxury sports car">
+
+            <div class="card-content">
+                <h3>Bugatti Chiron Super Sport</h3>
+
+                <p>
+                    A remarkable hypercar designed for extreme
+                    speed and grand touring comfort.
+                </p>
+
+                <div class="tag">8.0L W16</div>
+                <div class="tag">1577 HP</div>
+
+                <p class="speed">Top speed: 440 km/h</p>
+
+                <p>0–100 km/h: About 2.4 seconds</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=85"
+            alt="Sports car">
+
+            <div class="card-content">
+                <h3>Bugatti Veyron 16.4</h3>
+
+                <p>
+                    The iconic hypercar that helped redefine
+                    high-performance road cars.
+                </p>
+
+                <div class="tag">8.0L W16</div>
+                <div class="tag">1001 HP</div>
+
+                <p class="speed">Top speed: 407 km/h</p>
+
+                <p>0–100 km/h: About 2.5 seconds</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=85"
+            alt="Performance car">
+
+            <div class="card-content">
+                <h3>Bugatti Divo</h3>
+
+                <p>
+                    A limited-production hypercar developed
+                    with a focus on agility and cornering.
+                </p>
+
+                <div class="tag">8.0L W16</div>
+                <div class="tag">1500 HP</div>
+
+                <p class="speed">Top speed: 380 km/h</p>
+
+                <p>0–100 km/h: About 2.4 seconds</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=85"
+            alt="Track performance car">
+
+            <div class="card-content">
+                <h3>Bugatti Bolide</h3>
+
+                <p>
+                    An extreme track-only machine designed
+                    around lightweight construction and speed.
+                </p>
+
+                <div class="tag">8.0L W16</div>
+                <div class="tag">1600 HP</div>
+
+                <p class="speed">Designed for the racetrack</p>
+
+                <p>Track performance depends on conditions.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Speed Comparison -->
+<section id="speed">
+    <h2 class="heading">SPEED & PERFORMANCE</h2>
+
+    <table>
+        <tr>
+            <th>Car Model</th>
+            <th>Power</th>
+            <th>Top Speed</th>
+            <th>0–100 km/h</th>
+        </tr>
+
+        <tr>
+            <td>Chiron Super Sport</td>
+            <td>1577 HP</td>
+            <td>440 km/h</td>
+            <td>About 2.4 s</td>
+        </tr>
+
+        <tr>
+            <td>Veyron 16.4</td>
+            <td>1001 HP</td>
+            <td>407 km/h</td>
+            <td>About 2.5 s</td>
+        </tr>
+
+        <tr>
+            <td>Divo</td>
+            <td>1500 HP</td>
+            <td>380 km/h</td>
+            <td>About 2.4 s</td>
+        </tr>
+
+        <tr>
+            <td>Bolide</td>
+            <td>1600 HP</td>
+            <td>Track-focused</td>
+            <td>Track-dependent</td>
+        </tr>
+    </table>
+
+    <p style="text-align:center; color:#a8c5db;">
+        Performance figures vary by model version and testing conditions.
+    </p>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <h2 class="heading">HYPERCAR GALLERY</h2>
+
+    <div class="gallery">
+        <img
+        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=85"
+        alt="Sports car gallery 1">
+
+        <img
+        src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=85"
+        alt="Sports car gallery 2">
+
+        <img
+        src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=85"
+        alt="Sports car gallery 3">
+
+        <img
+        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=85"
+        alt="Sports car gallery 4">
+    </div>
+</section>
+
+<!-- Choose Your Car -->
+<section>
+    <div class="choice">
+        <h2 class="heading">CHOOSE YOUR FAVOURITE</h2>
+
+        <p>Select a Bugatti model to view its details.</p>
+
+        <select id="model">
+            <option value="">-- Choose a Model --</option>
+            <option value="Chiron Super Sport">Chiron Super Sport</option>
+            <option value="Veyron 16.4">Veyron 16.4</option>
+            <option value="Divo">Divo</option>
+            <option value="Bolide">Bolide</option>
+        </select>
+
+        <br>
+
+        <button class="btn" onclick="showDetails()">
+            SHOW DETAILS
+        </button>
+
+        <p id="result"></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <h2>BUGATTI</h2>
+
+    <p>THE ART OF AUTOMOTIVE EXCELLENCE</p>
+
+    <p>
+        <a href="#home" style="color:#00bfff;">Home</a> |
+        <a href="#about" style="color:#00bfff;">About</a> |
+        <a href="#models" style="color:#00bfff;">Models</a> |
+        <a href="#speed" style="color:#00bfff;">Speed</a>
+    </p>
+
+    <p>Designed by: Your Name</p>
+    <p>© 2026 Bugatti Fan Website</p>
+</footer>
+
+<script>
+function showDetails() {
+    let model = document.getElementById("model").value;
+    let result = document.getElementById("result");
+
+    let details = {
+        "Chiron Super Sport":
+            "Top speed: up to 440 km/h | Power: 1577 HP",
+        "Veyron 16.4":
+            "Top speed: up to 407 km/h | Power: 1001 HP",
+        "Divo":
+            "Top speed: 380 km/h | Power: 1500 HP",
+        "Bolide":
+            "Track-only hypercar | Power: up to 1600 HP"
+    };
+
+    if (model === "") {
+        result.innerHTML = "Please select a car model!";
+    } else {
+        result.innerHTML =
+            "<b>Bugatti " + model + "</b><br>" + details[model];
+    }
+}
+</script>
+
+</body>
+</html>
